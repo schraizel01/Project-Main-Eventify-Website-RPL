@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AdminSidebar from '../../components/AdminSidebar';
 import api from '../../services/api';
-import { Users, Calendar, TrendingUp, Loader2 } from 'lucide-react';
+import { Users, Calendar, TrendingUp, Loader2, Printer } from 'lucide-react';
+import { printDashboard } from '../../utils/printUtils';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState({ totalEvents: 0, totalParticipants: 0, upcomingEvents: 0 });
@@ -37,9 +38,18 @@ const DashboardPage = () => {
       <AdminSidebar />
       
       <main className="flex-1 p-8 overflow-y-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-          <p className="mt-1 text-gray-500">Welcome to Eventify Admin Portal.</p>
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+            <p className="mt-1 text-gray-500">Welcome to Eventify Admin Portal.</p>
+          </div>
+          <button
+            onClick={() => printDashboard(stats, recentEvents)}
+            className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 shadow-sm text-sm font-medium transition-colors"
+          >
+            <Printer className="w-4 h-4 mr-2" />
+            Cetak Laporan
+          </button>
         </div>
 
         {loading ? (

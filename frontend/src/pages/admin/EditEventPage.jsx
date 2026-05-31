@@ -4,6 +4,7 @@ import AdminSidebar from '../../components/AdminSidebar';
 import api from '../../services/api';
 import { ArrowLeft, Loader2, Info } from 'lucide-react';
 import toast from 'react-hot-toast';
+import ImageUpload from '../../components/ImageUpload';
 
 const EditEventPage = () => {
   const { id } = useParams();
@@ -158,8 +159,11 @@ const EditEventPage = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label htmlFor="gambar" className="block text-sm font-semibold text-gray-700 mb-1">URL Gambar Kegiatan (Opsional)</label>
-                <input type="url" id="gambar" name="gambar" value={formData.gambar} onChange={handleInputChange} placeholder="https://example.com/image.jpg" className="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm py-2 px-3 focus:ring-primary focus:border-primary sm:text-sm" />
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Gambar Kegiatan (Opsional)</label>
+                <ImageUpload
+                  value={formData.gambar}
+                  onChange={(url) => setFormData(prev => ({ ...prev, gambar: url }))}
+                />
               </div>
 
               <div>

@@ -1,39 +1,47 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import LogoEventify from '../../assets/Logo Eventify.png';
 import TextEventify from '../../assets/Text Eventify.png';
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-background font-sans">
+    <div className="min-h-screen flex flex-col bg-[#f0eef8] font-sans">
       <Navbar />
-      
-      <main className="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl w-full">
-          
-          <div className="text-center mb-12 flex justify-center">
-            <img src={TextEventify} alt="Eventify" className="h-16 md:h-20 w-auto" />
+
+      <main className="flex-grow flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl w-full flex flex-col items-center">
+
+          {/* Logo + Text Eventify */}
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <img
+              src={LogoEventify}
+              alt="Logo Eventify"
+              className="h-32 w-auto"
+            />
+            <img
+              src={TextEventify}
+              alt="Eventify"
+              className="h-10 w-auto"
+            />
           </div>
-          
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-16 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-br-full"></div>
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-tl-full"></div>
-            
-            <div className="relative z-10 text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Empowering Academic Excellence</h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8 rounded-full"></div>
-              
-              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
-                Eventify adalah platform manajemen acara digital yang dirancang untuk menyederhanakan agenda akademik bagi mahasiswa dan penyelenggara.
-              </p>
-              
-              <p className="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
-                Kami percaya bahwa pengetahuan harus mudah diakses. Oleh karena itu, kami membangun Eventify untuk menghubungkan institusi pendidikan dengan pembelajar yang antusias melalui pengalaman pendaftaran acara yang mulus, tanpa hambatan, dan tanpa batas.
-              </p>
-            </div>
+
+          {/* Gradient Paragraph Box */}
+          <div
+            className="w-full rounded-[40px] px-12 py-10 text-center text-[#1a0050] font-semibold text-base leading-relaxed shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, #c5b3e6 0%, #9575cd 50%, #b39ddb 100%)',
+            }}
+          >
+            Eventify adalah platform manajemen acara digital yang dirancang untuk
+            menyederhanakan agenda akademik bagi mahasiswa dan penyelenggara. Dengan
+            fokus pada efisiensi dan kejelasan, kami menyediakan ekosistem terintegrasi
+            untuk mengeksplorasi seminar, mendaftar lokakarya secara instan, hingga
+            mengelola sertifikasi otomatis. Visi kami adalah membantu Anda mengubah
+            peluang belajar menjadi keahlian nyata melalui pengalaman yang modern dan
+            terorganisir.
           </div>
-          
+
         </div>
       </main>
 

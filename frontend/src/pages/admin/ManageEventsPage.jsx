@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../components/AdminSidebar';
 import api from '../../services/api';
-import { Edit2, Trash2, Plus, Loader2, Calendar } from 'lucide-react';
+import { Edit2, Trash2, Plus, Loader2, Calendar, Printer } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { printEvents } from '../../utils/printUtils';
 
 const ManageEventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -56,13 +57,23 @@ const ManageEventsPage = () => {
             <h1 className="text-3xl font-bold text-gray-900">Manage Events</h1>
             <p className="mt-1 text-gray-500">Create, edit, and manage your academic events.</p>
           </div>
-          <Link
-            to="/admin/events/create"
-            className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition-colors shadow-sm"
-          >
-            <Plus className="w-5 h-5 mr-2" />
-            Buat Event Baru
-          </Link>
+          <div className="flex gap-3">
+            <button
+              onClick={() => printEvents(events)}
+              disabled={events.length === 0}
+              className="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 shadow-sm text-sm font-medium disabled:opacity-60 transition-colors"
+            >
+              <Printer className="w-4 h-4 mr-2" />
+              Cetak Laporan
+            </button>
+            <Link
+              to="/admin/events/create"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition-colors shadow-sm"
+            >
+              <Plus className="w-5 h-5 mr-2" />
+              Buat Event Baru
+            </Link>
+          </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">

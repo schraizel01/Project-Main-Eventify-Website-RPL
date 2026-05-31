@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AdminSidebar from '../../components/AdminSidebar';
 import api from '../../services/api';
-import { Search, Download, Loader2 } from 'lucide-react';
+import { Search, Download, Loader2, Printer } from 'lucide-react';
+import { printPeserta } from '../../utils/printUtils';
 
 const ParticipantsPage = () => {
   const [pendaftaran, setPendaftaran] = useState([]);
@@ -79,6 +80,13 @@ const ParticipantsPage = () => {
     }
   };
 
+  const handlePrint = () => {
+    const selectedEventName = selectedEvent 
+      ? events.find(e => e.kegiatan_id == selectedEvent)?.judul || 'Semua Kegiatan'
+      : 'Semua Kegiatan';
+    printPeserta(pendaftaran, selectedEventName);
+  };
+
   return (
     <div className="flex min-h-screen bg-gray-50 font-sans">
       <AdminSidebar />
@@ -91,6 +99,14 @@ const ParticipantsPage = () => {
           </div>
           
           <div className="flex gap-3">
+            <button 
+              onClick={handlePrint}
+              disabled={pendaftaran.length === 0}
+              className="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 shadow-sm text-sm font-medium disabled:opacity-60 transition-colors"
+            >
+              <Printer className="w-4 h-4 mr-2" />
+              Cetak Laporan
+            </button>
             <button 
               onClick={handleExport}
               disabled={exporting || pendaftaran.length === 0}
